@@ -35,4 +35,4 @@ int main() {
 	}
 	cout<<max_lead_player<<" "<<max_lead<<endl;
 	return 0;
-}```
+}
