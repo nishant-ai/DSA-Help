@@ -1,10 +1,12 @@
 ![hacktoberfest](https://github.com/nishant-ai/TravelGo/blob/main/hacktoberfestbanner.webp)
 
-## DSA Help:
+## ⭐️ DSA Help:
 
 Hola Señoras and Amigos!
 
 This repository is a Kickstart for those who want to learn Data Structures and Algorithms in any Programming language.
+
+🌟 Don't Forget to Star the Repository! 🌟
 
 ### Programming Langauges:
 
