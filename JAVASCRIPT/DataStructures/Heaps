@@ -1,0 +1,101 @@
+Heaps are another type of tree that have some particular rules. There are two main types of heaps, MaxHeaps and MinHeaps. In MaxHeaps, parent nodes are always greater than its children, and in MinHeaps, parent nodes are always smaller than its children.
+
+max_heap_example
+A max heap
+min_heap_example
+A min heap
+In this data structure there're no guarantees between siblings, meaning that nodes at the same "level" don't follow any rule besides being higher/lower than their parent.
+
+Also, heaps are as compact as possible, meaning each level contains all the nodes it can contain with no empty spaces, and new children are put into the left spaces of the tree first.
+
+Heaps, and in particular binary heaps, are frequently used to implement priority queues, which at the same time are frequently used in well-known algorithms such as Dijkstra's path-finding algorithm.
+
+Priority queues are a type of data structure in which each element has an associated priority and elements with a higher priority are presented first.
+
+Graphs
+Graphs are a data structure formed by a group of nodes and certain connections between those nodes. Unlike trees, graphs don't have root and leaf nodes, nor a "head" or a "tail". Different nodes are connected to each other and there's no implicit parent-child connection between them.
+
+images-1
+A graph
+Graphs are data structures often useful for:
+
+Social networks
+Geolocalizaton
+Recommendation systems
+Graphs can be classified into different types according to the characteristics of the connections between nodes:
+
+Undirected and directed graphs
+We say a graph is undirected if there's no implicit direction in the connections between nodes.
+
+If we take the following example image, you can see that there's no direction in the connection between node 2 and node 3. The connection goes both ways, meaning you can traverse the data structure from node 2 to node 3, and from node 3 to node 2. Undirected means the connections between nodes can be used both ways.
+
+Undirected_graph.svg
+An undirected graph
+And as you may have guessed, directed graphs are the exact opposite. Let's reuse the previous example image, and see that here there's an implicit direction in the connections between nodes.
+
+In this particular graph, you could traverse from node A to node B, but you can't go from node B to A.
+
+images-1
+A directed graph
+Weighted and unweighted graphs
+We say a graph is weighted if the connections between nodes have an assigned weight. In this case, weight just means a value that is assigned to a specific connection. It's information about the connection itself, not about the nodes.
+
+Following this example, we can see the connection between nodes 0 and 4, has a weight of 7. And the connection between nodes 3 and 1 has a weight of 4.
+
+1_P68VQPcnFXBo9XlA4pDNrg
+A weighted graph
+To understand the use of weighted graphs, imagine if you wanted to represent a map with many different locations, and give the user information about how long it might take them to go from one place to another.
+
+A weighted graph would be perfect for this, as you could use each node to save information about the location, the connections could represent the available roads between each place, and the weights would represent the physical distance from one place to another.
+
+
+
+
+// We create a class for the graph
+class Graph{
+    // The graph has only one property which is the adjacency list
+    constructor() {
+        this.adjacencyList = {}
+    }
+    // The addNode method takes a node value as parameter and adds it as a key to the adjacencyList if it wasn't previously present
+    addNode(node) {
+        if (!this.adjacencyList[node]) this.adjacencyList[node] = []
+    }
+    // The addConnection takes two nodes as parameters, and it adds each node to the other's array of connections.
+    addConnection(node1,node2) {
+        this.adjacencyList[node1].push(node2)
+        this.adjacencyList[node2].push(node1)
+    }
+    // The removeConnection takes two nodes as parameters, and it removes each node from the other's array of connections.
+    removeConnection(node1,node2) {
+        this.adjacencyList[node1] = this.adjacencyList[node1].filter(v => v !== node2)
+        this.adjacencyList[node2] = this.adjacencyList[node2].filter(v => v !== node1)
+    }
+    // The removeNode method takes a node value as parameter. It removes all connections to that node present in the graph and then deletes the node key from the adj list.
+    removeNode(node){
+        while(this.adjacencyList[node].length) {
+            const adjacentNode = this.adjacencyList[node].pop()
+            this.removeConnection(node, adjacentNode)
+        }
+        delete this.adjacencyList[node]
+    }
+}
+
+const Argentina = new Graph()
+Argentina.addNode("Buenos Aires")
+Argentina.addNode("Santa fe")
+Argentina.addNode("Córdoba")
+Argentina.addNode("Mendoza")
+Argentina.addConnection("Buenos Aires", "Córdoba")
+Argentina.addConnection("Buenos Aires", "Mendoza")
+Argentina.addConnection("Santa fe", "Córdoba")
+
+console.log(Argentina)
+// Graph {
+//     adjacencyList: {
+//         'Buenos Aires': [ 'Córdoba', 'Mendoza' ],
+//         'Santa fe': [ 'Córdoba' ],
+//         'Córdoba': [ 'Buenos Aires', 'Santa fe' ],
+//         Mendoza: [ 'Buenos Aires' ]
+//     }
+// }
