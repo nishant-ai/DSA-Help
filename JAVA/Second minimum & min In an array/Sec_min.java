@@ -51,7 +51,7 @@ public class Sec_Min {
             }
 
         }
-        int [] maxmin = {sec, min}; // this is a array of two elements
+        int [] maxmin = {sec, min}; // the sec and min are stored in an array with index 0, 1
         return maxmin;
 
     }
