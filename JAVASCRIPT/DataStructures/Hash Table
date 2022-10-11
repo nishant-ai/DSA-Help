@@ -1,0 +1,93 @@
+Hash Tables are a data structure that allow you to create a list of paired values. You can then retrieve a certain value by using the key for that value, which you put into the table beforehand.
+
+A Hash Table transforms a key into an integer index using a hash function, and the index will decide where to store the key/value pair in memory:
+
+You'll commonly use a Hash Table because of its fast search, insertion, and delete operations:
+
+HASH TABLE TIME COMPLEXITY IN BIG O NOTATION	
+Algorithm	 Average	Worst case
+Space	     O(n)	    O(n)
+Search	     O(1)	    O(n)
+Insert	     O(1)	    O(n)
+Delete	     O(1)	    O(n)
+
+The most common example of a Hash Table in JavaScript is the Object data type, where you can pair the object's property value with a property key.
+
+But JavaScript's Object type is a special kind of Hash Table implementation for two reasons:
+
+1) It has properties added by the Object class. Keys you input may conflict and overwrite default properties inherited from the class.
+2) The size of the Hash Table is not tracked. You need to manually count how many properties are defined by the programmer instead of inherited from the prototype.
+For example, the Object prototype has the hasOwnProperty() method which allows you to check if a property is not inherited:
+
+
+//Here's the complete HashTable class code again with the collision avoidance applied for your reference:
+
+
+class HashTable {
+  constructor() {
+    this.table = new Array(127);
+    this.size = 0;
+  }
+
+  _hash(key) {
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) {
+      hash += key.charCodeAt(i);
+    }
+    return hash % this.table.length;
+  }
+
+  set(key, value) {
+    const index = this._hash(key);
+    if (this.table[index]) {
+      for (let i = 0; i < this.table[index].length; i++) {
+        if (this.table[index][i][0] === key) {
+          this.table[index][i][1] = value;
+          return;
+        }
+      }
+      this.table[index].push([key, value]);
+    } else {
+      this.table[index] = [];
+      this.table[index].push([key, value]);
+    }
+    this.size++;
+  }
+
+  get(key) {
+    const index = this._hash(key);
+    if (this.table[index]) {
+      for (let i = 0; i < this.table.length; i++) {
+        if (this.table[index][i][0] === key) {
+          return this.table[index][i][1];
+        }
+      }
+    }
+    return undefined;
+  }
+
+  remove(key) {
+    const index = this._hash(key);
+
+    if (this.table[index] && this.table[index].length) {
+      for (let i = 0; i < this.table.length; i++) {
+        if (this.table[index][i][0] === key) {
+          this.table[index].splice(i, 1);
+          this.size--;
+          return true;
+        }
+      }
+    } else {
+      return false;
+    }
+  }
+
+  display() {
+    this.table.forEach((values, index) => {
+      const chainedValues = values.map(
+        ([key, value]) => `[ ${key}: ${value} ]`
+      );
+      console.log(`${index}: ${chainedValues}`);
+    });
+  }
+}
