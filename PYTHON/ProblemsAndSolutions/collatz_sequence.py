@@ -7,6 +7,8 @@ base number = ?
 if the base number is even; divide it by 2, and the answer,
 reassign it to the base number
 else 3 * base number + 1
+For more explanation:
+Collatz conjecture. (2022, October 9). In Wikipedia. https://en.wikipedia.org/wiki/Collatz_conjecture
 """
 
 

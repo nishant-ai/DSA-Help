@@ -1,7 +1,9 @@
 # fibonacci.py
 """
 Factorial is a mathematical function of f(n!):
-Mathematical formulae: n * (n - 1) * (n - 2) * ... * (n - n)
+Mathematical formulae: n * (n - 1)!
+Further explanation: Factorial. (2022, October 4).
+In Wikipedia. https://en.wikipedia.org/wiki/Factorial
 """
 
 
@@ -13,5 +15,3 @@ def factorial(starting_number: int) -> int:
     fib = starting_number * factorial(starting_number - 1)
     return fib
 
-
-print(factorial(2))
