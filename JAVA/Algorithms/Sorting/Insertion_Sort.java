@@ -1,5 +1,14 @@
 import java.util.Arrays;
 
+/*   Insertion Sort
+*    This is one of the simplest sorting algorithms. It works by taking each element as sentinal element(key)
+*    and inserting previous elements it into the correct position in the sorted array. It is similar to sorting 
+*    a hand of cards.
+ *   Space Complexity: O(1)
+ *   Time Complexity: O(n^2)
+ *   Stable: Yes
+ */
+
 public class Insertion_Sort {
     public static void main(String[] args) {
         int[] arr=new int[]{10,9,8,7,6,5,4,3,2,1};
