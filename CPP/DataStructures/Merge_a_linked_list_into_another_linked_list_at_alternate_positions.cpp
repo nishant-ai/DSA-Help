@@ -1,5 +1,5 @@
-/* C++ program to merge a linked list into another at
- alternate positions */
+
+ 
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -55,7 +55,7 @@ void merge(Node *p, Node **q)
 	*q = q_curr; // Update head pointer of second list
 }
 
-//Driver code
+
 int main()
 {
 	Node *p = NULL, *q = NULL;
