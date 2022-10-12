@@ -55,7 +55,7 @@ void merge(Node *p, Node **q)
 	*q = q_curr; // Update head pointer of second list
 }
 
-//Driver code...
+//Driver code
 int main()
 {
 	Node *p = NULL, *q = NULL;
