@@ -1,0 +1,155 @@
+import java.util.*;
+
+public class BST{
+    class Node{
+        int data;
+        Node left, right;
+
+        public Node(int data)
+        {
+            this.data = data;
+            left = right = null;
+        }
+    }
+    Node root;
+    BST(){root = null;}
+    BST(int data){
+        root = new Node(data);
+    }
+    void insert(int data) { root = insertRecu(root, data); }
+
+    Node insertRecu(Node root, int data)
+    {
+        if (root == null) {
+            root = new Node(data);
+            return root;
+        }
+        /* Otherwise, recur down the tree */
+        if (data < root.data)
+            root.left = insertRecu(root.left, data);
+        else if (data > root.data)
+            root.right = insertRecu(root.right, data);
+
+        /* return the (unchanged) node pointer */
+        return root;
+    }
+    void delete(int data) { root = deleteNode(root, data); }
+
+    public Node deleteNode(Node node, int value) {
+        if(node == null){
+            return null;
+        }
+        else {
+            //Value less than node than searching in left otherwise in right
+            if(value < node.data)
+                node.left = deleteNode(node.left, value);
+            else if(value > node.data)
+                node.right = deleteNode(node.right, value);
+
+                //If value is equal to node's data
+            else {
+                //If node to be deleted has no child then, set the node to null
+                if(node.left == null && node.right == null) {
+                    node = null;
+                }
+                //If node to be deleted has only one right child
+                else if(node.left == null) {
+                    node = node.right;
+                }
+                //If node to be deleted has only one left child
+                else if(node.right == null) {
+                    node = node.left;
+                }
+                //If node to be deleted has two child node
+                else {
+                    //then find the minimum node from right subtree
+                    Node temp = minNode(node.right);
+                    //Exchange the data between node and temp
+                    node.data = temp.data;
+                    //Delete the node duplicate node from right subtree
+                    node.right = deleteNode(node.right, temp.data);
+                }
+            }
+            return node;
+        }
+    }
+    public Node minNode(Node root) {
+        if (root.left != null)
+            return minNode(root.left);
+        else
+            return root;
+    }
+    public static void inorder(Node root){
+        if(root == null){
+            return;
+        }
+        inorder(root.left);
+        System.out.print(root.data + " ");
+        inorder(root.right);
+    }
+    public static void preorder(Node root) throws Exception{
+        if(root == null){
+            throw new Exception("The tree is empty");
+        }
+        System.out.print(root.data + " ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+    public static void postorder(Node root){
+        if(root == null){
+            return;
+        }
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.data + " ");
+    }
+    public static void levelOrder(Node root){
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(!q.isEmpty()){
+            Node curNode = q.remove();
+            if(curNode==null){
+                System.out.println();
+
+                if(q.isEmpty()){
+                    break;
+                }else{
+                    q.add(null);
+                }
+            }else{
+                System.out.print(curNode.data + " ");
+                if(curNode.left != null){
+                    q.add(curNode.left);
+                }
+                if(curNode.right!=null){
+                    q.add(curNode.right);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        BST tree = new BST();
+        tree.insert(9);
+        tree.insert(3);
+        tree.insert(2);
+        tree.insert(4);
+        tree.insert(7);
+        tree.insert(6);
+        tree.insert(8);
+
+        System.out.println("Inorder traversal of the given tree");
+        inorder(tree.root);
+        System.out.println("\nDelete 2");
+        tree.delete(2);
+        System.out.println("Inorder traversal of the modified tree");
+        inorder(tree.root);
+        System.out.println("\nDelete 9");
+        tree.delete(9);
+        System.out.println("Inorder traversal of the modified tree");
+        inorder(tree.root);
+
+    }
+
+}
