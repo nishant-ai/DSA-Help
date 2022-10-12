@@ -24,7 +24,7 @@
 
 
 
-## Programming Langauges:
+## Programming Languages:
 
 
 <div align="center">
