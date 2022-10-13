@@ -13,8 +13,7 @@ def binarySearch( arr, l, r, x):
 		
 		# If the element is smaller than the middle value then it must be in the left half
 		if arr[mid] > x:
-			return binarySearch(arr, l,
-								mid - 1, x)
+			return binarySearch(arr, l, mid - 1, x)
 		
 		# Else the element can only be in the right half
 		return binarySearch(arr, mid + 1, r, x)
@@ -34,8 +33,7 @@ def exponentialSearch(arr, n, x):
 		i = i * 2
 	
 	# Call binary search on the range
-	return binarySearch( arr, i // 2,
-						min(i, n-1), x)
+	return binarySearch( arr, i // 2, min(i, n-1), x)
 	
 
 # Test Case
