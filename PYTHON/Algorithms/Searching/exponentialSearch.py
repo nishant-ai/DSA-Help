@@ -41,8 +41,9 @@ def exponentialSearch(arr, n, x):
 # Test Case
 list = input("Enter a list of elements").split()
 target = input("Enter the element to be search")
+n = list.len()
 
-result = exponentialSearch(arr, n, x)
+result = exponentialSearch(list, n, target)
 if result == -1:
 	print ("Element not found in the array")
 else:
