@@ -26,7 +26,6 @@ void solve(){
     if(n & 1 == 1 && n == size){
         cout<<"NO"<<"\n";
         return;
-
     }
     cout<<"YES"<<"\n";
 }
