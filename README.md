@@ -1,7 +1,3 @@
-![hacktoberfest](https://github.com/nishant-ai/TravelGo/blob/main/hacktoberfestbanner.webp)
-
-
-
 # ⭐️ DSA Help:
 
 <div align="center">
@@ -37,14 +33,14 @@
 </div>
 
 
-## 🎃 Hacktoberfest 🎃
+## Open for Contributions
 
 ```java
     if (programmer.level >= Beginner) {
         contribution();
     }
 ```
-This Repository Accepts Hacktoberfest Pull Requests!
+This Repository Doesnot Accept Hacktoberfest Pull Requests!
 Let's connect and create wonderful projects!
 
 <div align="center">
@@ -93,7 +89,6 @@ The **code** is this repo is licensed under the [MIT License](LICENSE "View the 
 
 <div align="center">
     <p><b>Happy Hacking!</b></p>
-    <p><b>#Hacktoberfest-Accepted</b> ✨</p>
 </div>
 
 ---
