@@ -40,8 +40,6 @@
         contribution();
     }
 ```
-This Repository Doesnot Accept Hacktoberfest Pull Requests!
-Let's connect and create wonderful projects!
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/80044482/194142232-f1a68662-917d-438b-84c0-2b246907fbbd.gif" alt="gatsby 1497548146"/>
@@ -54,8 +52,6 @@ Thank you for your interest in contributing to our Repo! Pull requests are welco
 
 ### Steps for Contributing:
 
-- Star the Repository.
-- Fork the Project.
 - Clone from your Repositories.
 - Create your Branch.
 - Commit Changes.
